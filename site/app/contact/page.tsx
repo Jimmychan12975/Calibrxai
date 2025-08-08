@@ -25,8 +25,8 @@ export default function ContactPage() {
       formData.append('email', email);
       formData.append('message', message);
       
-      // Option 1: Use Formspree (free tier available)
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      // Use Formspree endpoint
+      const response = await fetch('https://formspree.io/f/mqalgnzz', {
         method: 'POST',
         body: formData,
         headers: {
