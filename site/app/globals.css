@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  /* Default: dark theme */
+  --background: #003557; /* your logo blue */
+  --foreground: #ffffff;
+
+  /* Calibrx brand */
+  --brand-primary: #003557; /* your logo blue */
+  --brand-secondary: #004d7a; /* lighter variant */
+  --brand-accent: #0066a3; /* accent blue */
+  --surface: #003557;
+  --muted: #002a45; /* darker blue */
+  --text: #ffffff; /* white text */
+  --text-muted: #b3d9ff; /* light blue text */
+  --grid-line: rgba(255, 255, 255, 0.04);
+}
+
+/* CSS Custom Properties for Tailwind theme */
+:root {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --color-primary: var(--brand-primary);
+  --color-secondary: var(--brand-secondary);
+  --color-accent: var(--brand-accent);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+}
+
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--background);
+  color: var(--text);
+}
+
+/* Utilities */
+.container { max-width: 80rem; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+
+/* Subtle grid background */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/***** Animations *****/
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 500ms ease-out both; }
+
+/* Calipet theme overrides (green, playful) */
+.theme-calipet {
+  --brand-primary: #16a34a; /* green-600 */
+  --brand-secondary: #10b981; /* emerald-500 */
+  --brand-accent: #22c55e; /* green-500 */
+  --background: #ffffff;
+  --foreground: #052e1b; /* deep green text */
+  --text: #052e1b;
+  --text-muted: #065f46;
+  --muted: #ecfdf5; /* emerald-50 */
+  --surface: #ffffff;
+  --grid-line: rgba(15, 23, 42, 0.06);
+}
+
+/* Within Calipet, switch to its dedicated font if provided */
+.theme-calipet { --font-sans: var(--font-calipet, var(--font-sans)); }
