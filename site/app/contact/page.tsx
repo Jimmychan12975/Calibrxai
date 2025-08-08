@@ -18,17 +18,27 @@ export default function ContactPage() {
     }
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
+      // For static export, we'll use a form submission service
+      // You can use services like Formspree, Netlify Forms, or your own endpoint
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('message', message);
+      
+      // Option 1: Use Formspree (free tier available)
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
-      if (res.ok) {
+
+      if (response.ok) {
         setStatus("Thanks! We'll get back to you at your email.");
         setName(""); setEmail(""); setMessage("");
       } else {
-        const data = await res.json().catch(() => ({}));
-        setStatus(data?.error || "Something went wrong. Please try again.");
+        setStatus("Something went wrong. Please try again.");
       }
     } catch (err) {
       setStatus("Network error. Please try again.");
