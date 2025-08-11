@@ -19,7 +19,7 @@ export default function Header() {
           <Link href="/products" className="hover:text-[--color-primary]">Products</Link>
           <Link href="/about" className="hover:text-[--color-primary]">About</Link>
           <Link href="/contact" className="hover:text-[--color-primary]">Contact</Link>
-          <Link href="/products" className="inline-flex items-center rounded-md bg-[--color-accent] text-white px-3 py-2 font-medium hover:opacity-90">Discover Our Products</Link>
+          <Link href="/products" className="inline-flex items-center rounded-md text-white px-3 py-2 font-medium shadow-md" style={{ backgroundColor: "var(--color-accent)" }}>Discover Our Products</Link>
         </nav>
 
         <button aria-label="Toggle Menu" className="md:hidden inline-flex items-center justify-center h-9 w-9 rounded border border-black/10 dark:border-white/15" onClick={() => setOpen(!open)}>
@@ -39,7 +39,7 @@ export default function Header() {
             <Link onClick={() => setOpen(false)} href="/products">Products</Link>
             <Link onClick={() => setOpen(false)} href="/about">About</Link>
             <Link onClick={() => setOpen(false)} href="/contact">Contact</Link>
-            <Link onClick={() => setOpen(false)} href="/products" className="inline-flex items-center justify-center rounded-md bg-[--color-accent] text-white px-3 py-2 font-medium">Discover Our Products</Link>
+            <Link onClick={() => setOpen(false)} href="/products" className="inline-flex items-center justify-center rounded-md text-white px-3 py-2 font-medium shadow-md" style={{ backgroundColor: "var(--color-accent)" }}>Discover Our Products</Link>
           </div>
         </div>
       )}

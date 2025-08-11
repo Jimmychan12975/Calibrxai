@@ -1,40 +1,57 @@
+import Image from "next/image";
 import Link from "next/link";
 
-type Props = {
-  title: string;
-  description: string;
-  href: string;
-  tag?: string;
-  accent?: "primary" | "secondary" | "accent";
+export type ProductCardProps = {
+  title?: string;
+  description?: string;
+  href?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  accentColor?: string;
+  ctaLabel?: string;
   comingSoon?: boolean;
 };
 
-export default function ProductCard({ title, description, href, tag, accent = "primary", comingSoon }: Props) {
-  const accentColor = {
-    primary: "var(--brand-primary)",
-    secondary: "var(--brand-secondary)",
-    accent: "var(--brand-accent)",
-  }[accent];
-
+export default function ProductCard({
+  title = "Product",
+  description = "Short description of the product.",
+  href = "#",
+  imageSrc,
+  imageAlt = "Product cover",
+  accentColor = "#0d9488",
+  ctaLabel = "View Product",
+  comingSoon = false,
+}: ProductCardProps) {
+  const hasImage = Boolean(imageSrc);
   return (
-    <div className="group rounded-xl border border-black/10 dark:border-white/10 bg-surface p-6 shadow-sm hover:shadow transition-shadow">
-      <div className="flex items-center justify-between mb-3">
-        <h3 className="text-lg font-semibold tracking-tight">{title}</h3>
-        {tag && (
-          <span className="text-xs px-2 py-1 rounded-full" style={{ background: `${accentColor}15`, color: accentColor }}>
-            {tag}
-          </span>
+    <div className="overflow-hidden h-full flex flex-col border border-black/10 dark:border-white/10 rounded-2xl bg-surface">
+      <div className="relative aspect-[16/9] bg-gray-50">
+        {hasImage ? (
+          <Image src={imageSrc as string} alt={imageAlt} fill className="object-cover" />
+        ) : (
+          <div className="absolute inset-0 bg-grid" />
         )}
       </div>
-      <p className="text-sm text-[--color-text-muted] mb-5">{description}</p>
-      <div className="flex items-center justify-between">
-        <Link href={href} className="inline-flex items-center gap-2 text-sm font-medium" style={{ color: accentColor }}>
-          {comingSoon ? "Learn more" : "View product"}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M7 17L17 7" />
-            <path d="M7 7h10v10" />
-          </svg>
-        </Link>
+      <div className="p-6 flex-1 flex flex-col">
+        <div className="mb-4">
+          <h3 className="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h3>
+          <p className="mt-2 text-sm text-[--color-text-muted]">{description}</p>
+        </div>
+        <div className="mt-auto">
+          {comingSoon ? (
+            <button className="w-full cursor-not-allowed rounded-md border border-black/10 dark:border-white/15 px-4 py-2 text-sm text-[--color-text-muted] bg-transparent" disabled>
+              Coming Soon
+            </button>
+          ) : (
+            <Link
+              href={href}
+              className="w-full inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-white"
+              style={{ backgroundColor: accentColor }}
+            >
+              {ctaLabel}
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
