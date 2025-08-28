@@ -3,30 +3,61 @@ import Logo from "@/components/Logo";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-black/10 dark:border-white/10 bg-surface">
-      <div className="container py-10 grid grid-cols-1 sm:grid-cols-3 gap-8">
-        <div className="flex flex-col gap-3">
+    <footer className="new-footer">
+      <div className="footer-content">
+        <div className="footer-logo">
           <Link href="/" className="flex items-center">
-  <Logo className="h-10 w-auto" />
-</Link>
-          <p className="text-sm text-[--color-text-muted]">Building AI-powered products, block by block.</p>
-          <a className="text-sm hover:text-[--brand-accent]" href="mailto:hello@calibrxai.com">hello@calibrxai.com</a>
+            <Logo className="h-[60px] w-auto" />
+          </Link>
+          <p>Building the future of AI, one brick at a time. Trustworthy, innovative, and modular solutions for modern businesses.</p>
+
+          <div className="footer-social">
+            <a href="#" className="social-icon"><i className="ri-linkedin-fill" /></a>
+            <a href="#" className="social-icon"><i className="ri-twitter-fill" /></a>
+            <a href="#" className="social-icon"><i className="ri-facebook-fill" /></a>
+            <a href="#" className="social-icon"><i className="ri-instagram-line" /></a>
+          </div>
         </div>
-        <div className="flex flex-col gap-2">
-          <span className="text-sm font-semibold">Company</span>
-          <Link className="text-sm text-[--color-text-muted] hover:text-[--brand-accent]" href="/about">About</Link>
-          <Link className="text-sm text-[--color-text-muted] hover:text-[--brand-accent]" href="/products">Products</Link>
-          <Link className="text-sm text-[--color-text-muted] hover:text-[--brand-accent]" href="/contact">Contact</Link>
+
+        <div className="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">News & Blog</a></li>
+          </ul>
         </div>
-        <div className="flex flex-col gap-2">
-          <span className="text-sm font-semibold">Legal</span>
-          <Link className="text-sm text-[--color-text-muted] hover:text-[--brand-accent]" href="/privacy">Privacy Policy</Link>
-          <Link className="text-sm text-[--color-text-muted] hover:text-[--brand-accent]" href="/terms">Terms & Conditions</Link>
+
+        <div className="footer-links">
+          <h4>Solutions</h4>
+          <ul>
+            <li><a href="#services">Intelligent Automation</a></li>
+            <li><a href="#services">Predictive Analytics</a></li>
+            <li><a href="#services">Customer Experience</a></li>
+            <li><a href="#services">Document Intelligence</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#">White Papers</a></li>
+            <li><a href="#">Webinars</a></li>
+            <li><a href="#">Documentation</a></li>
+          </ul>
         </div>
       </div>
-      <div className="border-t border-black/10 dark:border-white/10">
-        <div className="container py-4 text-xs text-[--color-text-muted]">© {new Date().getFullYear()} Calibrx AI. All rights reserved.</div>
+
+      <div className="footer-bottom">
+        <p>© {new Date().getFullYear()} Calibrx AI. All rights reserved.</p>
+        <ul>
+          <li><Link href="/privacy">Privacy Policy</Link></li>
+          <li><Link href="/terms">Terms of Service</Link></li>
+          <li><Link href="/cookie-policy">Cookie Policy</Link></li>
+        </ul>
       </div>
     </footer>
   );
-} 
+}

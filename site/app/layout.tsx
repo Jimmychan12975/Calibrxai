@@ -35,6 +35,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet" />
+      </head>
       <body className={`${jakarta.variable} ${geistMono.variable} bg-surface text-[--color-text] antialiased min-h-screen flex flex-col`}>
         <Header />
         <main className="flex-1">{children}</main>

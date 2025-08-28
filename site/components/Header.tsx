@@ -8,21 +8,21 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-surface/90 backdrop-blur border-b border-black/10 dark:border-white/10">
-      <div className="container h-16 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-white shadow-md">
+      <div className="px-20 py-5 flex items-center justify-between">
         <Link href="/" className="flex items-center">
-  <Logo className="h-15 w-auto" />
-</Link>
+          <Logo className="h-14 w-auto" />
+        </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm">
-          <Link href="/" className="hover:text-[--color-primary]">Home</Link>
-          <Link href="/products" className="hover:text-[--color-primary]">Products</Link>
-          <Link href="/about" className="hover:text-[--color-primary]">About</Link>
-          <Link href="/contact" className="hover:text-[--color-primary]">Contact</Link>
-          <Link href="/products" className="inline-flex items-center rounded-md text-white px-3 py-2 font-medium shadow-md" style={{ backgroundColor: "var(--color-accent)" }}>Discover Our Products</Link>
+        <nav className="hidden md:flex items-center text-[18px]">
+          <Link href="/" className="ml-10 text-[#003557] hover:text-[#0056a3] relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-[#003557] after:-bottom-1 after:left-0 hover:after:w-full transition-all">Home</Link>
+          <Link href="/about" className="ml-10 text-[#003557] hover:text-[#0056a3] relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-[#003557] after:-bottom-1 after:left-0 hover:after:w-full transition-all">About</Link>
+          <Link href="/services" className="ml-10 text-[#003557] hover:text-[#0056a3] relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-[#003557] after:-bottom-1 after:left-0 hover:after:w-full transition-all">Services</Link>
+          <Link href="/products" className="ml-10 text-[#003557] hover:text-[#0056a3] relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-[#003557] after:-bottom-1 after:left-0 hover:after:w-full transition-all">Products</Link>
+          <Link href="/contact" className="ml-10 contact-btn">Contact Us</Link>
         </nav>
 
-        <button aria-label="Toggle Menu" className="md:hidden inline-flex items-center justify-center h-9 w-9 rounded border border-black/10 dark:border-white/15" onClick={() => setOpen(!open)}>
+        <button aria-label="Toggle Menu" className="md:hidden inline-flex items-center justify-center h-9 w-9 rounded border border-black/10" onClick={() => setOpen(!open)}>
           <div className="i-[]" />
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[--color-text]">
             <line x1="3" y1="6" x2="21" y2="6" />
@@ -33,13 +33,13 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-black/10 dark:border-white/10 bg-surface">
-          <div className="container py-3 flex flex-col gap-3">
+        <div className="md:hidden border-t border-black/10 bg-white">
+          <div className="px-6 py-3 flex flex-col gap-3">
             <Link onClick={() => setOpen(false)} href="/">Home</Link>
-            <Link onClick={() => setOpen(false)} href="/products">Products</Link>
             <Link onClick={() => setOpen(false)} href="/about">About</Link>
-            <Link onClick={() => setOpen(false)} href="/contact">Contact</Link>
-            <Link onClick={() => setOpen(false)} href="/products" className="inline-flex items-center justify-center rounded-md text-white px-3 py-2 font-medium shadow-md" style={{ backgroundColor: "var(--color-accent)" }}>Discover Our Products</Link>
+            <Link onClick={() => setOpen(false)} href="/services">Services</Link>
+            <Link onClick={() => setOpen(false)} href="/products">Products</Link>
+            <Link onClick={() => setOpen(false)} href="/contact" className="contact-btn inline-flex items-center justify-center w-max">Contact Us</Link>
           </div>
         </div>
       )}

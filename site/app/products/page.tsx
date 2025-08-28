@@ -1,4 +1,4 @@
-import ProductCard from "@/components/ProductCard";
+import Link from "next/link";
 import { products } from "@/lib/products";
 
 export const metadata = {
@@ -8,24 +8,34 @@ export const metadata = {
 
 export default function ProductsPage() {
   return (
-    <div className="container py-12">
-      <h1 className="text-3xl font-bold tracking-tight">Products</h1>
-      <p className="mt-2 text-[--color-text-muted] max-w-2xl">Our growing suite of AI products is built with a modular philosophy—each block designed to be robust and composable.</p>
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+    <section className="services">
+      <div className="services-header">
+        <h1 className="section-title">Our Products</h1>
+        <p>Our growing suite of AI products is built with a modular philosophy—each block designed to be robust and composable.</p>
+      </div>
+
+      <div className="services-grid" style={{ maxWidth: "1200px", margin: "0 auto" }}>
         {products.map((p) => (
-          <ProductCard
-            key={p.slug}
-            title={p.name}
-            description={p.summary}
-            href={p.theme === "calipet" ? p.href : "#"}
-            imageSrc={p.slug === "calipet" ? p.image : undefined}
-            imageAlt={`${p.name} cover`}
-            accentColor={p.accentColor ?? "#0d9488"}
-            ctaLabel={p.theme === "calipet" ? "Explore Calipet" : "Coming Soon"}
-            comingSoon={p.slug !== "calipet"}
-          />
+          <div key={p.slug} className="service-card">
+            <div className="service-image" style={{ padding: 0, height: 300 }}>
+              {p.image ? (
+                <img src={p.image} alt={`${p.name} cover`} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+              ) : (
+                <i className="ri-stack-line" />
+              )}
+            </div>
+            <div className="service-content">
+              <h3>{p.name}</h3>
+              <p>{p.summary}</p>
+              {p.href && p.href !== "#" ? (
+                <Link href={p.href} className="service-link">Explore <i className="ri-arrow-right-line" /></Link>
+              ) : (
+                <span className="service-link" style={{ opacity: 0.6, cursor: "default" }}>Coming soon</span>
+              )}
+            </div>
+          </div>
         ))}
       </div>
-    </div>
+    </section>
   );
-} 
+}
