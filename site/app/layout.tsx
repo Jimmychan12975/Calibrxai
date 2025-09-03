@@ -37,6 +37,18 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet" />
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EE96KFFCG0"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-EE96KFFCG0');
+            `,
+          }}
+        />
       </head>
       <body className={`${jakarta.variable} ${geistMono.variable} bg-surface text-[--color-text] antialiased min-h-screen flex flex-col`}>
         <Header />
