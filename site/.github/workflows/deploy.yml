@@ -34,7 +34,7 @@ jobs:
     - name: Install dependencies
       run: |
         cd site
-        npm ci
+        npm ci --ignore-scripts
         
     - name: Build
       run: |
