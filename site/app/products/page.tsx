@@ -2,8 +2,9 @@ import Link from "next/link";
 import { products } from "@/lib/products";
 
 export const metadata = {
-  title: "Products",
-  description: "Explore AI-powered products by Calibrx AI.",
+  title: "AI Products - Calibrx AI",
+  description: "Explore Calibrx AI's growing suite of AI products built with a modular philosophy. Each solution is designed to be robust, composable, and transformative for your business.",
+  keywords: ["AI products", "Calipet", "AI companion", "nutrition coach", "modular AI", "AI solutions"],
 };
 
 export default function ProductsPage() {

@@ -59,7 +59,7 @@ export default function ContactPage() {
             <div className="contact-icon"><i className="ri-map-pin-line" /></div>
             <div className="contact-text">
               <h4>Address</h4>
-              <p>123 Innovation Drive, Tech City, CA 94103</p>
+              <p>3812 Lupine ln apt I, CA 91302</p>
             </div>
           </div>
 

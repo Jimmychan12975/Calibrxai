@@ -1,6 +1,7 @@
 export const metadata = {
-  title: "Services",
-  description: "Explore Calibrx AI services and solutions.",
+  title: "AI Services & Solutions - Calibrx AI",
+  description: "Discover Calibrx AI's comprehensive AI services including intelligent automation, predictive analytics, customer experience solutions, document intelligence, and custom AI development.",
+  keywords: ["AI services", "intelligent automation", "predictive analytics", "AI consulting", "machine learning", "document intelligence"],
 };
 
 export default function ServicesPage() {
@@ -17,7 +18,7 @@ export default function ServicesPage() {
           <div className="service-content">
             <h3>Intelligent Automation</h3>
             <p>Streamline operations with AI-powered automation that learns and adapts to your business processes, reducing manual tasks and increasing efficiency.</p>
-            <a href="#" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
+            <a href="/contact" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
           </div>
         </div>
 
@@ -26,7 +27,7 @@ export default function ServicesPage() {
           <div className="service-content">
             <h3>Predictive Analytics</h3>
             <p>Harness the power of your data with advanced machine learning models that provide actionable insights and forecast future trends with remarkable accuracy.</p>
-            <a href="#" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
+            <a href="/contact" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
           </div>
         </div>
 
@@ -35,7 +36,7 @@ export default function ServicesPage() {
           <div className="service-content">
             <h3>AI-Powered Customer Experience</h3>
             <p>Enhance customer interactions with intelligent chatbots, personalized recommendations, and sentiment analysis that understands customer needs.</p>
-            <a href="#" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
+            <a href="/contact" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
           </div>
         </div>
 
@@ -44,7 +45,7 @@ export default function ServicesPage() {
           <div className="service-content">
             <h3>Document Intelligence</h3>
             <p>Transform unstructured documents into valuable data with AI that can read, understand, and extract information from any document format.</p>
-            <a href="#" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
+            <a href="/contact" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
           </div>
         </div>
 
@@ -53,7 +54,7 @@ export default function ServicesPage() {
           <div className="service-content">
             <h3>Custom AI Development</h3>
             <p>Partner with our experts to build bespoke AI solutions tailored to your specific industry challenges and business objectives.</p>
-            <a href="#" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
+            <a href="/contact" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
           </div>
         </div>
       </div>

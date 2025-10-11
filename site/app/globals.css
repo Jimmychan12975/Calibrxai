@@ -40,6 +40,24 @@ body {
   color: var(--text);
 }
 
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #003557;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
 /* Utilities */
 .container { max-width: 80rem; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
 
@@ -180,6 +198,9 @@ body { font-family: 'AlibabaSans', var(--font-sans), system-ui, -apple-system, S
 textarea.form-control { min-height: 150px; resize: vertical; }
 .submit-btn { background-color: #003557; color: white; border: none; padding: 15px 35px; border-radius: 4px; font-size: 18px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; font-family: 'AlibabaSans', sans-serif; }
 .submit-btn:hover { background-color: #004d7a; }
+.submit-btn:disabled { background-color: #ccc; cursor: not-allowed; }
+.form-control.error { border-color: #dc2626; box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2); }
+.error-message { color: #dc2626; font-size: 14px; margin-top: 5px; }
 
 /* New Design: Footer */
 footer.new-footer { background-color: #003557; color: white; padding: 80px 80px 40px; }
@@ -219,4 +240,59 @@ footer.new-footer { background-color: #003557; color: white; padding: 80px 80px 
   .service-card { width: 100%; }
   .contact { flex-direction: column; }
   .contact-form, .contact-content { width: 100%; }
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  .hero { 
+    padding: 0 16px; 
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero h1 { font-size: 48px; }
+  .hero p { font-size: 18px; }
+  .hero-buttons { 
+    flex-direction: column; 
+    gap: 16px;
+    align-items: center;
+  }
+  .btn.btn-outline { margin-left: 0; }
+  
+  .about, .services, .contact { padding: 40px 16px; }
+  .section-title { font-size: 32px; }
+  
+  .services-grid { 
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+  }
+  
+  .contact-form { padding: 30px 20px; }
+  
+  .footer-content { 
+    flex-direction: column; 
+    gap: 40px; 
+    text-align: center; 
+  }
+  
+  .footer-bottom { 
+    flex-direction: column; 
+    gap: 20px; 
+    text-align: center; 
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 36px; }
+  .hero p { font-size: 16px; }
+  .section-title { font-size: 28px; }
+  .value-item { 
+    flex-direction: column; 
+    text-align: center; 
+  }
+  .value-icon { 
+    margin-right: 0; 
+    margin-bottom: 16px; 
+  }
 }
