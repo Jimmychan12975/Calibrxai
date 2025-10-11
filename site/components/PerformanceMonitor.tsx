@@ -2,13 +2,20 @@
 
 import { useEffect } from "react";
 
+// Extend Window interface for gtag
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 export default function PerformanceMonitor() {
   useEffect(() => {
     // Only run in production
     if (process.env.NODE_ENV !== "production") return;
 
     // Web Vitals monitoring
-    const reportWebVitals = (metric: any) => {
+    const reportWebVitals = (metric: { name: string; id: string; value: number }) => {
       // Send to analytics service
       if (typeof window !== "undefined" && window.gtag) {
         window.gtag("event", metric.name, {
