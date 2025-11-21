@@ -1,163 +1,407 @@
-import ContactSection from "@/components/ContactSection";
+"use client";
+
+import React from "react";
+import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { FadeInUp } from "@/components/FadeInUp";
+import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
   return (
-    <>
-      {/* Hero Section */}
-      <section className="hero" id="home">
-        <div className="hero-content">
-          <h1>Build AI,<br />brick by brick</h1>
-          <p>Calibrx AI delivers trustworthy, modern artificial intelligence solutions designed to transform your business with precision and innovation.</p>
-          <div className="hero-buttons">
-            <a href="/products" className="btn">Explore Products</a>
-            <a href="/about" className="btn btn-outline">Learn More</a>
-          </div>
+    <div className="bg-matte-noise text-slate-200 min-h-screen font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
+      
+      {/* 1. Hero Section */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
+        <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
+          <div className="w-[800px] h-[800px] bg-gradient-to-b from-slate-800 to-transparent rounded-full blur-3xl" />
         </div>
-        <Image 
-          src="/Calibrx_AI_Hero_Image.png" 
-          alt="Calibrx AI - Building AI solutions brick by brick with modern technology" 
-          className="hero-image" 
-          width={800}
-          height={600}
-          priority
-        />
-        <div className="brick-animation" />
+        
+        <div className="container relative z-10 text-center px-4">
+          <FadeInUp delay={0.2} className="mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-mono uppercase tracking-widest text-cyan-400">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+              System Online
+            </div>
+          </FadeInUp>
+          
+          <FadeInUp delay={0.4}>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-8 max-w-5xl mx-auto leading-[1.1]">
+              Precision Engineering for <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-white to-slate-400">Human Habits.</span>
+            </h1>
+          </FadeInUp>
+          
+          <FadeInUp delay={0.6}>
+            {/* Increase mb-8 to mb-12 for more breathing room */}
+            <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-12">
+              Bringing engineering precision to the chaos of daily life.
+              <br className="hidden md:block" />
+              <span className="text-white font-medium mt-1 block">
+                We don't just track habits; we calibrate them.
+              </span>
+            </p>
+          </FadeInUp>
+          
+          <FadeInUp delay={0.8}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="#product" className="px-8 py-4 bg-white text-black font-bold uppercase tracking-wider hover:bg-cyan-50 transition-colors min-w-[160px]">
+                Explore
+              </a>
+              <a href="#philosophy" className="px-8 py-4 border border-white/20 text-white font-bold uppercase tracking-wider hover:bg-white/5 transition-colors min-w-[160px]">
+                Philosophy
+              </a>
+            </div>
+          </FadeInUp>
+        </div>
+
+        {/* 3D Abstract Shape Placeholder */}
+        <motion.div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[600px] h-[600px] opacity-30 md:opacity-50 pointer-events-none"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
+        >
+           <div className="w-full h-full border-[1px] border-white/10 rounded-full relative">
+             <div className="absolute inset-4 border-[1px] border-white/5 rounded-full" />
+             <div className="absolute inset-12 border-[1px] border-white/5 rounded-full" />
+             <div className="absolute top-0 left-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-1/2 rotate-45" />
+             <div className="absolute top-0 left-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-1/2 -rotate-45" />
+           </div>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-500 flex flex-col items-center gap-2 text-xs font-mono uppercase tracking-widest"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          Scroll to Calibrate
+          <div className="w-[1px] h-12 bg-gradient-to-b from-slate-500 to-transparent" />
+        </motion.div>
       </section>
 
-      {/* About Section */}
-      <section className="about" id="about">
-        <Image 
-          src="https://assets-persist.lovart.ai/agent_images/b0c59b6e-539b-4f0b-a4ea-1f0e0d4fec57.png" 
-          alt="Calibrx AI team working on artificial intelligence solutions" 
-          className="about-image" 
-          width={600}
-          height={400}
-        />
-        <div className="about-content">
-          <h2 className="section-title">About Calibrx AI</h2>
-          <p>At Calibrx AI, we&apos;re dedicated to building artificial intelligence solutions that are as reliable as they are innovative. Founded on the principle that great AI is constructed methodically—brick by brick—we combine cutting-edge technology with meticulous attention to detail.</p>
-          <p>Our team of AI experts, data scientists, and industry specialists work together to create customized solutions that address real business challenges while maintaining the highest standards of ethics and transparency.</p>
+{/* 2. The Philosophy Section */}
+<section id="philosophy" className="py-32 relative overflow-hidden bg-zinc-950">
+        {/* Optional: Background Noise Texture */}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 mix-blend-overlay"></div>
+        
+        <div className="container px-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            {/* Text Side (Unchanged) */}
+            <FadeInUp>
+              <div className="space-y-8">
+                <div className="flex items-center gap-4 text-cyan-500 font-mono text-xs uppercase tracking-[0.2em]">
+                  <span className="w-8 h-[1px] bg-cyan-500" />
+                  02 // The Drift
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight font-display">
+                  Entropy is the enemy <br />
+                  of performance.
+                </h2>
+                <div className="space-y-6 text-lg text-zinc-400 leading-relaxed font-light">
+                  <p>
+                    In semiconductor manufacturing, equipment drifts. Nanometer deviations compound into failure. 
+                    Without constant calibration, precision is lost.
+                  </p>
+                  <p>
+                    <strong className="text-white font-medium">Humans are no different.</strong>
+                  </p>
+                  <p>
+                    Our habits drift. Our focus degrades. Without a feedback loop, we lose our edge.
+                    Calibrx provides that loop—monitoring, analyzing, and correcting your trajectory in real-time.
+                  </p>
+                </div>
+              </div>
+            </FadeInUp>
 
-          <div className="values">
-            <div className="value-item">
-              <div className="value-icon">
-                <i className="ri-shield-check-line" />
-              </div>
-              <div className="value-text">
-                <h4>Trust</h4>
-                <p>We build AI systems you can rely on, with transparency at every step.</p>
-              </div>
-            </div>
+            {/* Visual Side - LOOPING OSCILLOSCOPE */}
+            <FadeInUp delay={0.2}>
+              <div className="relative aspect-[4/3] bg-zinc-900/50 rounded-lg border border-white/10 overflow-hidden backdrop-blur-sm group">
+                
+                {/* 1. Technical Grid Background */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:10px_10px]" />
+                
+                {/* 2. Axis Labels */}
+                <div className="absolute left-2 top-2 text-[10px] text-zinc-600 font-mono">AMP (dB)</div>
+                <div className="absolute right-2 bottom-2 text-[10px] text-zinc-600 font-mono">TIME (ms)</div>
+                <div className="absolute left-0 top-1/2 w-full h-[1px] bg-white/10 dashed" /> 
 
-            <div className="value-item">
-              <div className="value-icon">
-                <i className="ri-lightbulb-line" />
-              </div>
-              <div className="value-text">
-                <h4>Innovation</h4>
-                <p>Pushing boundaries while maintaining practical, applicable solutions.</p>
-              </div>
-            </div>
+                {/* 3. The Visualization Container */}
+                <div className="relative w-full h-full flex items-center justify-center p-8">
+                  <svg className="w-full h-full overflow-visible" viewBox="0 0 400 200">
 
-            <div className="value-item">
-              <div className="value-icon">
-                <i className="ri-stack-line" />
-              </div>
-              <div className="value-text">
-                <h4>Modularity</h4>
-                <p>Flexible, scalable solutions that grow with your business needs.</p>
-              </div>
-            </div>
+                    {/* The "Drifting" Red Signal (Noise) */}
+                    {/* FIXED: Amplitude is now contained between y=40 and y=160 (Screen is 0-200) */}
+                    <motion.path 
+                      d="M0,100 C50,100 80,100 120,100 S160,80 180,80 S220,130 240,130 S280,40 300,40 S360,160 380,160 L400,100" 
+                      fill="none" 
+                      stroke="#ef4444" 
+                      strokeWidth="2"
+                      strokeOpacity="0.8"
+                      className="drop-shadow-[0_0_6px_rgba(239,68,68,0.6)]"
+                      initial={{ pathLength: 0, opacity: 0.5 }}
+                      animate={{ 
+                        pathLength: [0, 1], 
+                        opacity: [0.5, 1] 
+                      }}
+                      transition={{ 
+                        duration: 3, 
+                        ease: "linear", 
+                        repeat: Infinity,
+                        repeatDelay: 0.5 
+                      }}
+                    />
 
-            <div className="value-item">
-              <div className="value-icon">
-                <i className="ri-team-line" />
+                    {/* The "Calibrated" Cyan Signal (Precision) */}
+                    {/* FIXED: Extends fully to the end (400) */}
+                    <motion.path 
+                      d="M0,100 L400,100" 
+                      fill="none" 
+                      stroke="#06b6d4" 
+                      strokeWidth="3"
+                      className="drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: [0, 1] }}
+                      transition={{ 
+                        duration: 3, 
+                        ease: "linear", 
+                        repeat: Infinity,
+                        repeatDelay: 0.5 
+                      }}
+                    />
+                  </svg>
+
+                  {/* 4. Scanning Vertical Line Animation - Synced with Lines */}
+                  <motion.div 
+                    className="absolute top-0 bottom-0 w-[2px] bg-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,1)] z-20"
+                    initial={{ left: "0%" }}
+                    animate={{ left: "100%" }}
+                    transition={{ 
+                      duration: 3, 
+                      ease: "linear", 
+                      repeat: Infinity,
+                      repeatDelay: 0.5 
+                    }}
+                  />
+
+                  {/* 5. Blinking Labels */}
+                  {/* Red Warning - Blinks fast */}
+                  <motion.div 
+                    className="absolute top-10 right-10 bg-red-500/10 border border-red-500/20 px-3 py-1 rounded text-xs text-red-400 font-mono tracking-wider"
+                    animate={{ opacity: [1, 0.5, 1] }}
+                    transition={{ duration: 0.8, repeat: Infinity }}
+                  >
+                     ⚠ DRIFT DETECTED
+                  </motion.div>
+                  
+                  {/* Cyan Status - Blinks slow */}
+                  <motion.div 
+                    className="absolute bottom-10 right-10 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded text-xs text-cyan-400 font-mono tracking-wider shadow-[0_0_10px_rgba(6,182,212,0.2)]"
+                    animate={{ opacity: [1, 0.8, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                     ✓ CALIBRATING...
+                  </motion.div>
+
+                </div>
               </div>
-              <div className="value-text">
-                <h4>Collaboration</h4>
-                <p>Working closely with clients to ensure AI serves their unique goals.</p>
+            </FadeInUp>
+          </div>
+        </div>
+      </section>
+      {/* 3. The Product Showcase (Calipet) */}
+      <section id="product" className="py-32 relative bg-zinc-950 overflow-hidden">
+        
+        {/* Background Spotlight Effect */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/20 blur-[120px] rounded-full opacity-50 pointer-events-none" />
+        
+        <div className="container px-4 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-cyan-400 text-xs font-mono mb-6">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                </span>
+                SYSTEM V1.0 DEPLOYED
+             </div>
+            <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6">
+              Meet <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Calipet</span>
+            </h2>
+            <p className="text-xl text-zinc-400">
+              Gamified health tracking for the engineered life. <br className="hidden md:block" />
+              Powered by computer vision, reinforced by gameplay.
+            </p>
+          </div>
+
+          {/* The Phone "Specimen" Container */}
+          <div className="relative max-w-[320px] mx-auto perspective-1000">
+            
+            {/* The Floating Phone */}
+            <Link href="/products/calipet" className="block cursor-pointer">
+              <motion.div 
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                className="relative z-20 rounded-[3rem] border-4 border-zinc-800 bg-zinc-950 shadow-2xl overflow-hidden"
+              >
+                {/* Replace this with your actual Phone Screenshot Image */}
+                <img 
+                  src="/Calipet_Hero_Image.png" 
+                  alt="Calipet App Interface" 
+                  className="w-full h-auto object-cover opacity-90" 
+                />
+                
+                {/* Screen Glare/Reflection Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none" />
+              </motion.div>
+            </Link>
+
+            {/* The Floor Reflection (The "Polished Cement" look) */}
+            <div className="absolute -bottom-12 left-4 right-4 h-full bg-gradient-to-b from-cyan-500/10 to-transparent blur-xl transform scale-y-[-0.3] opacity-50 z-10" />
+
+            {/* Technical Callout Lines (Left) */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 }}
+              className="absolute top-20 -left-4 md:-left-48 hidden md:flex items-center gap-4"
+            >
+              <div className="text-right">
+                <div className="text-cyan-400 font-mono text-xs font-bold">VISION CORE</div>
+                <div className="text-zinc-500 text-xs">Macronutrient Analysis</div>
               </div>
-            </div>
+              <div className="w-16 h-[1px] bg-cyan-500/30 relative">
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-cyan-500 rounded-full" />
+              </div>
+            </motion.div>
+
+            {/* Technical Callout Lines (Right) */}
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.7 }}
+              className="absolute bottom-32 -right-4 md:-right-48 hidden md:flex items-center gap-4 flex-row-reverse"
+            >
+              <div className="text-left">
+                <div className="text-cyan-400 font-mono text-xs font-bold">GAMIFICATION</div>
+                <div className="text-zinc-500 text-xs">Dopamine Feedback Loop</div>
+              </div>
+              <div className="w-16 h-[1px] bg-cyan-500/30 relative">
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-cyan-500 rounded-full" />
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="services" id="services">
-        <div className="services-header">
-          <h2 className="section-title">Our Solutions</h2>
-          <p>Discover how our modular AI solutions can transform your business operations and drive innovation across your organization.</p>
+      {/* 4. Features Grid (Bento) */}
+      <section className="py-32 container px-4 relative z-10">
+        {/* CHANGED: max-w-2xl -> max-w-3xl (Wider box) */}
+        <FadeInUp className="mb-16 text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-cyan-400 text-xs font-mono mb-6 backdrop-blur-md">
+            SYSTEM MODULES
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-display">
+            Granular Control.
+          </h2>
+          {/* ADDED: text-balance (Makes lines even) and Fixed Typo */}
+          <p className="text-lg text-slate-400 text-balance">
+            Designed for your life. Each module calibrates a specific vector of human performance.
+          </p>
+        </FadeInUp>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          
+          {/* Card 1: AI Food Scanner (Cyan Theme) */}
+          <FadeInUp delay={0.1}>
+            <div className="group relative h-full p-8 rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-sm overflow-hidden transition-all duration-500 hover:border-cyan-500/50 hover:bg-zinc-900/80">
+              
+              {/* The "Phantom Gradient" - Appears on Hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <div className="relative z-10">
+                <div className="w-14 h-14 bg-cyan-500/10 border border-cyan-500/20 rounded-xl flex items-center justify-center mb-6 text-2xl text-cyan-400 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                  <i className="ri-camera-lens-line" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3 font-display">AI Food Scanner</h3>
+                <p className="text-slate-400 leading-relaxed text-sm">
+                  Computer vision analysis of nutritional inputs. Instantly calculates macro-drift and suggests corrective meals based on your baseline.
+                </p>
+              </div>
+            </div>
+          </FadeInUp>
+
+          {/* Card 2: Gamified Progress (Green Theme) */}
+          <FadeInUp delay={0.2}>
+            <div className="group relative h-full p-8 rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-sm overflow-hidden transition-all duration-500 hover:border-green-500/50 hover:bg-zinc-900/80">
+              
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <div className="relative z-10">
+                <div className="w-14 h-14 bg-green-500/10 border border-green-500/20 rounded-xl flex items-center justify-center mb-6 text-2xl text-green-400 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
+                  <i className="ri-arrow-up-double-line" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3 font-display">Gamified Progress</h3>
+                <p className="text-slate-400 leading-relaxed text-sm">
+                  RPG-style progression for real-world habits. Level up your stats by maintaining consistency streaks. 
+                  <span className="block mt-2 text-green-400/70 font-mono text-xs">+15 XP per logged meal.</span>
+                </p>
+              </div>
+            </div>
+          </FadeInUp>
+
+          {/* Card 3: Data Precision (Purple Theme) */}
+          <FadeInUp delay={0.3}>
+            <div className="group relative h-full p-8 rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-sm overflow-hidden transition-all duration-500 hover:border-purple-500/50 hover:bg-zinc-900/80">
+              
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <div className="relative z-10">
+                <div className="w-14 h-14 bg-purple-500/10 border border-purple-500/20 rounded-xl flex items-center justify-center mb-6 text-2xl text-purple-400 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                  <i className="ri-bar-chart-grouped-line" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3 font-display">Data Precision</h3>
+                <p className="text-slate-400 leading-relaxed text-sm">
+                  Logarithmic visualizations of your health data. Identify trends with industrial-grade analytics tools that help you detect drift early.
+                </p>
+              </div>
+            </div>
+          </FadeInUp>
+
+          {/* Card 4: The Virtual Pet (Orange Theme) */}
+          <FadeInUp delay={0.4}>
+            <div className="group relative h-full p-8 rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-sm overflow-hidden transition-all duration-500 hover:border-orange-500/50 hover:bg-zinc-900/80">
+              
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <div className="relative z-10">
+                <div className="w-14 h-14 bg-orange-500/10 border border-orange-500/20 rounded-xl flex items-center justify-center mb-6 text-2xl text-orange-400 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
+                  <i className="ri-baidu-line" />
+                </div>
+                <div className="flex justify-between items-start">
+                  <h3 className="text-xl font-bold text-white mb-3 font-display">The Virtual Pet</h3>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/20 border border-orange-500/30 text-[10px] text-orange-300 font-mono">
+                    LIVE
+                  </span>
+                </div>
+                <p className="text-slate-400 leading-relaxed text-sm">
+                  Your digital reflection. As you improve, it evolves. Neglect your habits, and it glitches.
+                </p>
+              </div>
+            </div>
+          </FadeInUp>
         </div>
-
-        <div className="services-grid">
-          <div className="service-card">
-            <div className="service-image">
-              <i className="ri-robot-line" />
-            </div>
-            <div className="service-content">
-              <h3>Intelligent Automation</h3>
-              <p>Streamline operations with AI-powered automation that learns and adapts to your business processes, reducing manual tasks and increasing efficiency.</p>
-              <a href="/services" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
-            </div>
-          </div>
-
-          <div className="service-card">
-            <div className="service-image">
-              <i className="ri-brain-line" />
-            </div>
-            <div className="service-content">
-              <h3>Predictive Analytics</h3>
-              <p>Harness the power of your data with advanced machine learning models that provide actionable insights and forecast future trends with remarkable accuracy.</p>
-              <a href="/services" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
-            </div>
-          </div>
-
-          <div className="service-card">
-            <div className="service-image">
-              <i className="ri-customer-service-2-line" />
-            </div>
-            <div className="service-content">
-              <h3>AI-Powered Customer Experience</h3>
-              <p>Enhance customer interactions with intelligent chatbots, personalized recommendations, and sentiment analysis that understands customer needs.</p>
-              <a href="/services" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
-            </div>
-          </div>
-
-          <div className="service-card">
-            <div className="service-image">
-              <i className="ri-file-search-line" />
-            </div>
-            <div className="service-content">
-              <h3>Document Intelligence</h3>
-              <p>Transform unstructured documents into valuable data with AI that can read, understand, and extract information from any document format.</p>
-              <a href="/services" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
-            </div>
-          </div>
-
-          <div className="service-card">
-            <div className="service-image">
-              <i className="ri-code-box-line" />
-            </div>
-            <div className="service-content">
-              <h3>Custom AI Development</h3>
-              <p>Partner with our experts to build bespoke AI solutions tailored to your specific industry challenges and business objectives.</p>
-              <a href="/services" className="service-link">Learn more <i className="ri-arrow-right-line" /></a>
-            </div>
-          </div>
-        </div>
-
-        <Image 
-          src="https://assets-persist.lovart.ai/agent_images/1e2d39e0-6b4d-4d78-9d74-5cdbecd316f0.png" 
-          alt="Calibrx AI solutions showcase - intelligent automation, predictive analytics, and customer experience tools" 
-          width={1200}
-          height={400}
-          style={{ width: "100%", marginTop: 60, borderRadius: 8 }}
-        />
       </section>
 
-      {/* Contact Section (shared) */}
-      <ContactSection />
-    </>
+      {/* 5. Contact/CTA Section */}
+      <section className="py-20 relative z-10">
+        <FadeInUp>
+          <ContactSection />
+        </FadeInUp>
+      </section>
+    </div>
   );
 }

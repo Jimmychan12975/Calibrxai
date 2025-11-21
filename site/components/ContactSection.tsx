@@ -38,7 +38,6 @@ export default function ContactSection() {
 
   const handleInputChange = (field: keyof ContactFormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    // Clear error when user starts typing
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: "" }));
     }
@@ -82,124 +81,129 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="contact" id="contact">
-      <div className="contact-content">
-        <h2 className="section-title">Get in Touch</h2>
-        <p>
-          Ready to start building your AI solution brick by brick? Our team of experts is here to help you transform your business with
-          intelligent, trustworthy AI technology.
-        </p>
-        <Image
-          src="https://assets-persist.lovart.ai/agent_images/c918b178-4159-4ca5-afd6-4326f65a2845.png"
-          alt="Contact Calibrx AI - Get in touch with our AI experts"
-          width={800}
-          height={400}
-          style={{ width: "100%", margin: "30px 0", borderRadius: 8 }}
-        />
-
-        <div className="contact-info">
-          <div className="contact-item">
-            <div className="contact-icon">
-              <i className="ri-map-pin-line" />
-            </div>
-            <div className="contact-text">
-              <h4>Address</h4>
-              <p>3812 Lupine ln apt I, CA 91302</p>
-            </div>
+    <section className="py-20 bg-zinc-950 relative overflow-hidden" id="contact">
+       {/* Background grid for consistency */}
+       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] z-0" />
+       
+       <div className="container relative z-10 flex flex-col lg:flex-row gap-16 items-start">
+        
+        <div className="lg:w-1/2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-cyan-400 text-xs font-mono mb-6 backdrop-blur-md">
+            CONTACT SYSTEM
           </div>
+          <h2 className="text-4xl font-bold mb-6 text-white font-display">Get in Touch</h2>
+          <p className="text-lg text-zinc-400 mb-8 leading-relaxed font-light">
+            Ready to start building your AI solution brick by brick? Our team of experts is here to help you transform your business with
+            intelligent, trustworthy AI technology.
+          </p>
+          
+          <div className="space-y-6">
+            <div className="flex items-center gap-4 group">
+              <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-white/10 flex items-center justify-center text-cyan-400 text-xl group-hover:border-cyan-500/50 group-hover:bg-cyan-500/10 transition-all duration-300">
+                <i className="ri-map-pin-line" />
+              </div>
+              <div>
+                <h4 className="font-bold text-white font-display">Address</h4>
+                <p className="text-zinc-500 font-mono text-sm">3812 Lupine ln apt I, CA 91302</p>
+              </div>
+            </div>
 
-          <div className="contact-item">
-            <div className="contact-icon">
-              <i className="ri-mail-line" />
+            <div className="flex items-center gap-4 group">
+              <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-white/10 flex items-center justify-center text-cyan-400 text-xl group-hover:border-cyan-500/50 group-hover:bg-cyan-500/10 transition-all duration-300">
+                <i className="ri-mail-line" />
+              </div>
+              <div>
+                <h4 className="font-bold text-white font-display">Email</h4>
+                <p>
+                  <a href="mailto:hello@calibrxai.com" className="text-zinc-500 hover:text-cyan-400 transition-colors font-mono text-sm">hello@calibrxai.com</a>
+                </p>
+              </div>
             </div>
-            <div className="contact-text">
-              <h4>Email</h4>
-              <p>
-                <a href="mailto:hello@calibrxai.com">hello@calibrxai.com</a>
-              </p>
-            </div>
-          </div>
 
-          <div className="contact-item">
-            <div className="contact-icon">
-              <i className="ri-phone-line" />
-            </div>
-            <div className="contact-text">
-              <h4>Phone</h4>
-              <p>+1 (909) 568-3588</p>
+            <div className="flex items-center gap-4 group">
+              <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-white/10 flex items-center justify-center text-cyan-400 text-xl group-hover:border-cyan-500/50 group-hover:bg-cyan-500/10 transition-all duration-300">
+                <i className="ri-phone-line" />
+              </div>
+              <div>
+                <h4 className="font-bold text-white font-display">Phone</h4>
+                <p className="text-zinc-500 font-mono text-sm">+1 (909) 568-3588</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="contact-form">
-        <h3 style={{ color: "#003557", marginBottom: 30, fontSize: 28 }}>Send us a message</h3>
-        <form onSubmit={submit}>
-          <div className="form-group">
-            <label htmlFor="name">Name *</label>
-            <input
-              id="name"
-              type="text"
-              className={`form-control ${errors.name ? 'error' : ''}`}
-              placeholder="Your name"
-              value={formData.name}
-              onChange={(e) => handleInputChange("name", e.target.value)}
-              aria-describedby={errors.name ? "name-error" : undefined}
-            />
-            {errors.name && <div id="name-error" className="error-message">{errors.name}</div>}
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="email">Email *</label>
-            <input
-              id="email"
-              type="email"
-              className={`form-control ${errors.email ? 'error' : ''}`}
-              placeholder="Your email address"
-              value={formData.email}
-              onChange={(e) => handleInputChange("email", e.target.value)}
-              aria-describedby={errors.email ? "email-error" : undefined}
-            />
-            {errors.email && <div id="email-error" className="error-message">{errors.email}</div>}
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="subject">Subject</label>
-            <input
-              id="subject"
-              type="text"
-              className="form-control"
-              placeholder="Subject"
-              value={formData.subject || ""}
-              onChange={(e) => handleInputChange("subject", e.target.value)}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="message">Message *</label>
-            <textarea
-              id="message"
-              className={`form-control ${errors.message ? 'error' : ''}`}
-              placeholder="Your message"
-              value={formData.message}
-              onChange={(e) => handleInputChange("message", e.target.value)}
-              aria-describedby={errors.message ? "message-error" : undefined}
-            />
-            {errors.message && <div id="message-error" className="error-message">{errors.message}</div>}
-          </div>
-
-          <button type="submit" className="submit-btn" disabled={isSubmitting}>
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </button>
-          {status && (
-            <div className="text-sm" style={{ marginTop: 12, color: "#555" }}>
-              {status}
+        <div className="lg:w-1/2 w-full bg-zinc-900/50 backdrop-blur-sm p-8 md:p-10 border border-white/10 rounded-2xl shadow-2xl relative overflow-hidden">
+          {/* Decorative top line */}
+          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+          
+          <h3 className="text-2xl font-bold mb-8 text-white font-display">Send us a message</h3>
+          <form onSubmit={submit} className="space-y-6">
+            <div>
+              <label htmlFor="name" className="block mb-2 text-xs font-mono text-cyan-400 uppercase tracking-wider">Name *</label>
+              <input
+                id="name"
+                type="text"
+                className={`w-full bg-black/40 border ${errors.name ? 'border-red-500' : 'border-white/10'} p-4 text-white placeholder-zinc-600 focus:border-cyan-500 focus:outline-none transition-colors rounded-lg font-light`}
+                placeholder="ENTER DESIGNATION"
+                value={formData.name}
+                onChange={(e) => handleInputChange("name", e.target.value)}
+                aria-describedby={errors.name ? "name-error" : undefined}
+              />
+              {errors.name && <div id="name-error" className="text-red-500 text-xs mt-1 font-mono">{errors.name}</div>}
             </div>
-          )}
-        </form>
+
+            <div>
+              <label htmlFor="email" className="block mb-2 text-xs font-mono text-cyan-400 uppercase tracking-wider">Email *</label>
+              <input
+                id="email"
+                type="email"
+                className={`w-full bg-black/40 border ${errors.email ? 'border-red-500' : 'border-white/10'} p-4 text-white placeholder-zinc-600 focus:border-cyan-500 focus:outline-none transition-colors rounded-lg font-light`}
+                placeholder="ENTER CONTACT FREQUENCY"
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                aria-describedby={errors.email ? "email-error" : undefined}
+              />
+              {errors.email && <div id="email-error" className="text-red-500 text-xs mt-1 font-mono">{errors.email}</div>}
+            </div>
+
+            <div>
+              <label htmlFor="subject" className="block mb-2 text-xs font-mono text-cyan-400 uppercase tracking-wider">Subject</label>
+              <input
+                id="subject"
+                type="text"
+                className="w-full bg-black/40 border border-white/10 p-4 text-white placeholder-zinc-600 focus:border-cyan-500 focus:outline-none transition-colors rounded-lg font-light"
+                placeholder="TRANSMISSION SUBJECT"
+                value={formData.subject || ""}
+                onChange={(e) => handleInputChange("subject", e.target.value)}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="message" className="block mb-2 text-xs font-mono text-cyan-400 uppercase tracking-wider">Message *</label>
+              <textarea
+                id="message"
+                rows={5}
+                className={`w-full bg-black/40 border ${errors.message ? 'border-red-500' : 'border-white/10'} p-4 text-white placeholder-zinc-600 focus:border-cyan-500 focus:outline-none transition-colors resize-y rounded-lg font-light`}
+                placeholder="INPUT DATA STREAM..."
+                value={formData.message}
+                onChange={(e) => handleInputChange("message", e.target.value)}
+                aria-describedby={errors.message ? "message-error" : undefined}
+              />
+              {errors.message && <div id="message-error" className="text-red-500 text-xs mt-1 font-mono">{errors.message}</div>}
+            </div>
+
+            <button type="submit" className="w-full bg-white text-black font-bold uppercase tracking-wider py-4 hover:bg-cyan-400 transition-all duration-300 rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(34,211,238,0.5)]" disabled={isSubmitting}>
+              {isSubmitting ? "TRANSMITTING..." : "INITIATE TRANSMISSION"}
+            </button>
+            
+            {status && (
+              <div className="text-sm text-cyan-400 mt-4 text-center font-mono border border-cyan-500/20 bg-cyan-500/10 p-2 rounded">
+                {status}
+              </div>
+            )}
+          </form>
+        </div>
       </div>
     </section>
   );
 }
-
-

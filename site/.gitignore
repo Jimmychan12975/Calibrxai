@@ -42,3 +42,4 @@ next-env.d.ts
 
 # Allow CNAME file for custom domain
 !public/CNAME
+git.txt

@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import "./landing.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
 
-const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-sans", weight: ["400", "500", "600", "700", "800"] });
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space", weight: ["300", "400", "500", "600", "700"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", weight: ["300", "400", "500", "600"] });
+const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", weight: ["400", "500"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.calibrxai.com"),
@@ -124,7 +126,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${jakarta.variable} ${geistMono.variable} bg-surface text-[--color-text] antialiased min-h-screen flex flex-col`}>
+      <body className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} bg-background text-foreground antialiased min-h-screen flex flex-col font-sans`}>
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <PerformanceMonitor />
         <ErrorBoundary>
