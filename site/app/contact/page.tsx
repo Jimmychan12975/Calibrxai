@@ -104,7 +104,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-white font-display">Address</h4>
-                  <p className="text-zinc-500 font-mono text-sm">3812 Lupine ln apt I, CA 91302</p>
+                  <p className="text-zinc-500 font-mono text-sm">Calabasas, CA, USA</p>
                 </div>
               </div>
 

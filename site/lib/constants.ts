@@ -2,7 +2,7 @@
 export const CONTACT_INFO = {
   email: "hello@calibrxai.com",
   phone: "+1 (909) 568-3588",
-  address: "3812 Lupine ln apt I, CA 91302",
+  address: "Calabasas, CA, USA",
 } as const;
 
 // Social media links

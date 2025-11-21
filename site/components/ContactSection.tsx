@@ -104,7 +104,7 @@ export default function ContactSection() {
               </div>
               <div>
                 <h4 className="font-bold text-white font-display">Address</h4>
-                <p className="text-zinc-500 font-mono text-sm">3812 Lupine ln apt I, CA 91302</p>
+                <p className="text-zinc-500 font-mono text-sm">Calabasas, CA, USA</p>
               </div>
             </div>
 
@@ -158,7 +158,7 @@ export default function ContactSection() {
                 id="email"
                 type="email"
                 className={`w-full bg-black/40 border ${errors.email ? 'border-red-500' : 'border-white/10'} p-4 text-white placeholder-zinc-600 focus:border-cyan-500 focus:outline-none transition-colors rounded-lg font-light`}
-                placeholder="ENTER CONTACT FREQUENCY"
+                placeholder="ENTER EMAIL ADDRESS"
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
                 aria-describedby={errors.email ? "email-error" : undefined}

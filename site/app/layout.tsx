@@ -103,10 +103,9 @@ export default function RootLayout({
               },
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "3812 Lupine ln apt I, CA",
-                "addressLocality": "",
+                "streetAddress": "Calabasas, CA, USA",
+                "addressLocality": "Calabasas",
                 "addressRegion": "CA",
-                "postalCode": "91302",
                 "addressCountry": "US"
               },
               "sameAs": [
