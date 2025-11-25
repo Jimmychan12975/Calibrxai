@@ -14,7 +14,7 @@ export const products: Product[] = [
     name: "Calipet",
     summary:
       "A playful AI companion that brings everyday delight through smart interactions.",
-    image: "/playful-green-abstract-nature.png",
+    image: "/playful-green-abstract-nature.webp",
     href: "/products/calipet",
     accentColor: "#10b981",
     theme: "calipet",

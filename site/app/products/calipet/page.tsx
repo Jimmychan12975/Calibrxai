@@ -69,7 +69,7 @@ export default function CalipetPage() {
             <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 blur-3xl rounded-full opacity-40 group-hover:opacity-60 transition-opacity" />
             <div className="relative rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-xl p-2 overflow-hidden shadow-2xl transform group-hover:scale-[1.01] transition-transform duration-500">
               <Image 
-                src="/Calipet_Hero_Image.png" 
+                src="/Calipet_Hero_Image.webp" 
                 alt="Calipet Dashboard" 
                 width={600} 
                 height={450} 
@@ -100,7 +100,7 @@ export default function CalipetPage() {
               </p>
               <div className="relative rounded-xl overflow-hidden border border-white/10 group-hover:border-cyan-500/30 transition-colors">
                 <Image 
-                  src="/Calipet_Hero_Image.png" 
+                  src="/Calipet_Hero_Image.webp" 
                   alt="Companion Interface" 
                   width={500} 
                   height={300} 
@@ -124,7 +124,7 @@ export default function CalipetPage() {
               </p>
               <div className="relative rounded-xl overflow-hidden border border-white/10 group-hover:border-purple-500/30 transition-colors">
                 <Image 
-                  src="/Calipet_Character_Progression.png" 
+                  src="/Calipet_Character_Progression.webp" 
                   alt="Level Up System" 
                   width={500} 
                   height={300} 
@@ -148,7 +148,7 @@ export default function CalipetPage() {
               </p>
               <div className="relative rounded-xl overflow-hidden border border-white/10 group-hover:border-green-500/30 transition-colors">
                 <Image 
-                  src="/Calipet_Meal_Scanning_Feature.png" 
+                  src="/Calipet_Meal_Scanning_Feature.webp" 
                   alt="Scanning Feature" 
                   width={500} 
                   height={300} 
@@ -172,7 +172,7 @@ export default function CalipetPage() {
               </p>
               <div className="relative rounded-xl overflow-hidden border border-white/10 group-hover:border-orange-500/30 transition-colors">
                 <Image 
-                  src="/Calipet_Advertisement_Banner.png" 
+                  src="/Calipet_Advertisement_Banner.webp" 
                   alt="Marketing Banner" 
                   width={500} 
                   height={300} 

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeInUp } from "@/components/FadeInUp";
 import ContactSection from "@/components/ContactSection";
+import OscilloscopeGraph from "@/components/OscilloscopeGraph";
 
 export default function Home() {
   return (
@@ -57,7 +58,7 @@ export default function Home() {
 
         {/* 3D Abstract Shape Placeholder */}
         <motion.div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[600px] h-[600px] opacity-30 md:opacity-50 pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[600px] h-[600px] opacity-30 md:opacity-50 pointer-events-none will-change-transform"
           animate={{ rotate: 360 }}
           transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
         >
@@ -71,7 +72,7 @@ export default function Home() {
 
         {/* Scroll Indicator */}
         <motion.div 
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-500 flex flex-col items-center gap-2 text-xs font-mono uppercase tracking-widest"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-500 flex flex-col items-center gap-2 text-xs font-mono uppercase tracking-widest will-change-transform"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
@@ -117,96 +118,7 @@ export default function Home() {
 
             {/* Visual Side - LOOPING OSCILLOSCOPE */}
             <FadeInUp delay={0.2}>
-              <div className="relative aspect-[4/3] bg-zinc-900/50 rounded-lg border border-white/10 overflow-hidden backdrop-blur-sm group">
-                
-                {/* 1. Technical Grid Background */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:10px_10px]" />
-                
-                {/* 2. Axis Labels */}
-                <div className="absolute left-2 top-2 text-[10px] text-zinc-600 font-mono">AMP (dB)</div>
-                <div className="absolute right-2 bottom-2 text-[10px] text-zinc-600 font-mono">TIME (ms)</div>
-                <div className="absolute left-0 top-1/2 w-full h-[1px] bg-white/10 dashed" /> 
-
-                {/* 3. The Visualization Container */}
-                <div className="relative w-full h-full flex items-center justify-center p-8">
-                  <svg className="w-full h-full overflow-visible" viewBox="0 0 400 200">
-
-                    {/* The "Drifting" Red Signal (Noise) */}
-                    {/* FIXED: Amplitude is now contained between y=40 and y=160 (Screen is 0-200) */}
-                    <motion.path 
-                      d="M0,100 C50,100 80,100 120,100 S160,80 180,80 S220,130 240,130 S280,40 300,40 S360,160 380,160 L400,100" 
-                      fill="none" 
-                      stroke="#ef4444" 
-                      strokeWidth="2"
-                      strokeOpacity="0.8"
-                      className="drop-shadow-[0_0_6px_rgba(239,68,68,0.6)]"
-                      initial={{ pathLength: 0, opacity: 0.5 }}
-                      animate={{ 
-                        pathLength: [0, 1], 
-                        opacity: [0.5, 1] 
-                      }}
-                      transition={{ 
-                        duration: 3, 
-                        ease: "linear", 
-                        repeat: Infinity,
-                        repeatDelay: 0.5 
-                      }}
-                    />
-
-                    {/* The "Calibrated" Cyan Signal (Precision) */}
-                    {/* FIXED: Extends fully to the end (400) */}
-                    <motion.path 
-                      d="M0,100 L400,100" 
-                      fill="none" 
-                      stroke="#06b6d4" 
-                      strokeWidth="3"
-                      className="drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: [0, 1] }}
-                      transition={{ 
-                        duration: 3, 
-                        ease: "linear", 
-                        repeat: Infinity,
-                        repeatDelay: 0.5 
-                      }}
-                    />
-                  </svg>
-
-                  {/* 4. Scanning Vertical Line Animation - Synced with Lines */}
-                  <motion.div 
-                    className="absolute top-0 bottom-0 w-[2px] bg-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,1)] z-20"
-                    initial={{ left: "0%" }}
-                    animate={{ left: "100%" }}
-                    transition={{ 
-                      duration: 3, 
-                      ease: "linear", 
-                      repeat: Infinity,
-                      repeatDelay: 0.5 
-                    }}
-                  />
-
-                  {/* 5. Blinking Labels */}
-                  {/* Red Warning - Blinks fast */}
-                  <motion.div 
-                    className="absolute top-10 right-10 bg-red-500/10 border border-red-500/20 px-3 py-1 rounded text-xs text-red-400 font-mono tracking-wider"
-                    animate={{ opacity: [1, 0.5, 1] }}
-                    transition={{ duration: 0.8, repeat: Infinity }}
-                  >
-                     ⚠ DRIFT DETECTED
-                  </motion.div>
-                  
-                  {/* Cyan Status - Blinks slow */}
-                  <motion.div 
-                    className="absolute bottom-10 right-10 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded text-xs text-cyan-400 font-mono tracking-wider shadow-[0_0_10px_rgba(6,182,212,0.2)]"
-                    animate={{ opacity: [1, 0.8, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                     ✓ CALIBRATING...
-                  </motion.div>
-
-                </div>
-              </div>
+              <OscilloscopeGraph />
             </FadeInUp>
           </div>
         </div>
@@ -247,9 +159,11 @@ export default function Home() {
                 className="relative z-20 rounded-[3rem] border-4 border-zinc-800 bg-zinc-950 shadow-2xl overflow-hidden"
               >
                 {/* Replace this with your actual Phone Screenshot Image */}
-                <img 
-                  src="/Calipet_Hero_Image.png" 
-                  alt="Calipet App Interface" 
+                <Image 
+                  src="/Calipet_Hero_Image.webp" 
+                  alt="Calipet App Interface"
+                  width={320}
+                  height={640}
                   className="w-full h-auto object-cover opacity-90" 
                 />
                 

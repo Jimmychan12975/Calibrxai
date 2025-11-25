@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import "./landing.css";
 import Header from "@/components/Header";
@@ -14,35 +15,35 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mon
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.calibrxai.com"),
   title: {
-    default: "Calibrx AI - Building AI Solutions Brick by Brick",
+    default: "Calibrx AI - Precision Engineering for Human Habits",
     template: "%s — Calibrx AI",
   },
-  description: "Calibrx AI delivers trustworthy, modern artificial intelligence solutions designed to transform your business with precision and innovation. Expert AI development, automation, and analytics.",
-  keywords: ["AI solutions", "artificial intelligence", "machine learning", "automation", "predictive analytics", "AI consulting", "custom AI development"],
+  description: "Bringing engineering precision to the chaos of daily life. Calibrx uses AI to monitor, analyze, and correct your habits in real-time.",
+  keywords: ["AI habit tracker", "precision health", "Calipet", "gamified health", "AI nutrition scanner", "behavioral engineering", "dopamine feedback loop"],
   authors: [{ name: "Calibrx AI" }],
   creator: "Calibrx AI",
   publisher: "Calibrx AI",
   openGraph: {
-    title: "Calibrx AI - Building AI Solutions Brick by Brick",
-    description: "Calibrx AI delivers trustworthy, modern artificial intelligence solutions designed to transform your business with precision and innovation.",
+    title: "Calibrx AI - Precision Engineering for Human Habits",
+    description: "Bringing engineering precision to the chaos of daily life. Calibrx uses AI to monitor, analyze, and correct your habits in real-time.",
     url: "https://www.calibrxai.com",
     siteName: "Calibrx AI",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/Calibrx_AI_Hero_Image.png",
+        url: "/Calipet_Hero_Image.webp",
         width: 1200,
         height: 630,
-        alt: "Calibrx AI - Building AI solutions brick by brick",
+        alt: "Calibrx AI - Precision Engineering for Human Habits",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Calibrx AI - Building AI Solutions Brick by Brick",
-    description: "Calibrx AI delivers trustworthy, modern artificial intelligence solutions designed to transform your business with precision and innovation.",
-    images: ["/Calibrx_AI_Hero_Image.png"],
+    title: "Calibrx AI - Precision Engineering for Human Habits",
+    description: "Bringing engineering precision to the chaos of daily life. Calibrx uses AI to monitor, analyze, and correct your habits in real-time.",
+    images: ["/Calipet_Hero_Image.webp"],
   },
   robots: {
     index: true,
@@ -72,58 +73,58 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet" />
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EE96KFFCG0"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-EE96KFFCG0');
-            `,
-          }}
+        
+        {/* Google tag (gtag.js) - Optimized Loading */}
+        <Script 
+          src="https://www.googletagmanager.com/gtag/js?id=G-EE96KFFCG0" 
+          strategy="afterInteractive" 
         />
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Calibrx AI",
-              "description": "Building AI-powered products, block by block. Delivering trustworthy, modern artificial intelligence solutions.",
-              "url": "https://www.calibrxai.com",
-              "logo": "https://www.calibrxai.com/logo.png",
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+1-909-568-3588",
-                "contactType": "customer service",
-                "email": "hello@calibrxai.com"
-              },
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Calabasas, CA, USA",
-                "addressLocality": "Calabasas",
-                "addressRegion": "CA",
-                "addressCountry": "US"
-              },
-              "sameAs": [
-                "https://linkedin.com/company/calibrx-ai",
-                "https://twitter.com/calibrxai"
-              ],
-              "foundingDate": "2024",
-              "industry": "Artificial Intelligence",
-              "services": [
-                "Intelligent Automation",
-                "Predictive Analytics",
-                "AI-Powered Customer Experience",
-                "Document Intelligence",
-                "Custom AI Development"
-              ]
-            })
-          }}
-        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-EE96KFFCG0');
+          `}
+        </Script>
+
+        {/* Structured Data - Optimized Loading */}
+        <Script id="structured-data" type="application/ld+json" strategy="worker">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Calibrx AI",
+            "description": "Building AI-powered products, block by block. Delivering trustworthy, modern artificial intelligence solutions.",
+            "url": "https://www.calibrxai.com",
+            "logo": "https://www.calibrxai.com/logo.webp",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+1-909-568-3588",
+              "contactType": "customer service",
+              "email": "hello@calibrxai.com"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Calabasas, CA, USA",
+              "addressLocality": "Calabasas",
+              "addressRegion": "CA",
+              "addressCountry": "US"
+            },
+            "sameAs": [
+              "https://linkedin.com/company/calibrx-ai",
+              "https://twitter.com/calibrxai"
+            ],
+            "foundingDate": "2024",
+            "industry": "Artificial Intelligence",
+            "services": [
+              "Intelligent Automation",
+              "Predictive Analytics",
+              "AI-Powered Customer Experience",
+              "Document Intelligence",
+              "Custom AI Development"
+            ]
+          })}
+        </Script>
       </head>
       <body className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} bg-background text-foreground antialiased min-h-screen flex flex-col font-sans`}>
         <a href="#main-content" className="skip-link">Skip to main content</a>
