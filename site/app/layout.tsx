@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
+import CookieConsent from "@/components/CookieConsent";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space", weight: ["300", "400", "500", "600", "700"] });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", weight: ["300", "400", "500", "600"] });
@@ -74,7 +75,7 @@ export default function RootLayout({
       <head>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet" />
         
-        {/* Google tag (gtag.js) - Optimized Loading */}
+        {/* Google tag (gtag.js) - Optimized Loading & Consent Logic */}
         <Script 
           src="https://www.googletagmanager.com/gtag/js?id=G-EE96KFFCG0" 
           strategy="afterInteractive" 
@@ -84,6 +85,12 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+            
+            // Default to denied
+            gtag('consent', 'default', {
+              'analytics_storage': 'denied'
+            });
+            
             gtag('config', 'G-EE96KFFCG0');
           `}
         </Script>
@@ -132,6 +139,7 @@ export default function RootLayout({
       <body className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} bg-background text-foreground antialiased min-h-screen flex flex-col font-sans`}>
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <PerformanceMonitor />
+        <CookieConsent />
         <ErrorBoundary>
           <Header />
           <main id="main-content" className="flex-1">{children}</main>
