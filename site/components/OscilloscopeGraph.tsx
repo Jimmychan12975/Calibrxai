@@ -9,7 +9,7 @@ export default function OscilloscopeGraph() {
 
   const pathTransition = {
     duration: 3,
-    ease: "linear",
+    ease: "linear" as const,
     repeat: Infinity,
     repeatDelay: 0.5
   };

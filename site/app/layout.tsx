@@ -88,43 +88,46 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Structured Data - Optimized Loading */}
-        <Script id="structured-data" type="application/ld+json" strategy="worker">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Calibrx AI",
-            "description": "Building AI-powered products, block by block. Delivering trustworthy, modern artificial intelligence solutions.",
-            "url": "https://www.calibrxai.com",
-            "logo": "https://www.calibrxai.com/logo.webp",
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+1-909-568-3588",
-              "contactType": "customer service",
-              "email": "hello@calibrxai.com"
-            },
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Calabasas, CA, USA",
-              "addressLocality": "Calabasas",
-              "addressRegion": "CA",
-              "addressCountry": "US"
-            },
-            "sameAs": [
-              "https://linkedin.com/company/calibrx-ai",
-              "https://twitter.com/calibrxai"
-            ],
-            "foundingDate": "2024",
-            "industry": "Artificial Intelligence",
-            "services": [
-              "Intelligent Automation",
-              "Predictive Analytics",
-              "AI-Powered Customer Experience",
-              "Document Intelligence",
-              "Custom AI Development"
-            ]
-          })}
-        </Script>
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Calibrx AI",
+              "description": "Building AI-powered products, block by block. Delivering trustworthy, modern artificial intelligence solutions.",
+              "url": "https://www.calibrxai.com",
+              "logo": "https://www.calibrxai.com/logo.webp",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+1-909-568-3588",
+                "contactType": "customer service",
+                "email": "hello@calibrxai.com"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Calabasas, CA, USA",
+                "addressLocality": "Calabasas",
+                "addressRegion": "CA",
+                "addressCountry": "US"
+              },
+              "sameAs": [
+                "https://linkedin.com/company/calibrx-ai",
+                "https://twitter.com/calibrxai"
+              ],
+              "foundingDate": "2024",
+              "industry": "Artificial Intelligence",
+              "services": [
+                "Intelligent Automation",
+                "Predictive Analytics",
+                "AI-Powered Customer Experience",
+                "Document Intelligence",
+                "Custom AI Development"
+              ]
+            })
+          }}
+        />
       </head>
       <body className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} bg-background text-foreground antialiased min-h-screen flex flex-col font-sans`}>
         <a href="#main-content" className="skip-link">Skip to main content</a>
