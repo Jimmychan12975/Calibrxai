@@ -153,16 +153,17 @@ export default function CalistockPage() {
               </div>
             </div>
 
-            {/* Logo / visual */}
-            <div className="relative flex items-center justify-center">
+            {/* Hero image */}
+            <div className="relative">
               <div className="absolute inset-0 bg-amber-500/5 rounded-3xl blur-3xl" />
-              <div className="relative w-full max-w-sm mx-auto rounded-2xl border border-white/[0.08] bg-[#111111] p-16 flex items-center justify-center">
+              <div className="relative rounded-2xl border border-white/[0.08] bg-[#111111] overflow-hidden">
                 <Image
-                  src="/calistock_logo.png"
-                  alt="Calistock"
-                  width={240}
-                  height={240}
-                  className="object-contain w-40 h-40"
+                  src="/Calistock_Market_1.jpg"
+                  alt="Calistock — Master the Markets with AI"
+                  width={600}
+                  height={800}
+                  className="w-full h-auto object-cover"
+                  priority
                 />
               </div>
             </div>
@@ -224,6 +225,38 @@ export default function CalistockPage() {
             <p className="text-amber-300 text-sm font-medium text-center">
               Core promise: Every trade tracked. Every result verified. Every strategy comparable.
             </p>
+          </div>
+
+          {/* App UI preview */}
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div className="rounded-2xl border border-white/[0.08] bg-[#111111] overflow-hidden">
+              <Image
+                src="/Calistock_Market_3.jpg"
+                alt="Calistock — Active Positions and AI Insights"
+                width={600}
+                height={800}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            <div className="space-y-5">
+              <h3 className="text-xl font-bold text-white">What the app actually shows you</h3>
+              <p className="text-zinc-400 leading-relaxed">
+                Your active positions display live P&L, eligibility status, and the AI's latest market update — updated daily from real close data.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "Live % return on each position",
+                  "AI Daily Update linked to your trade",
+                  "Eligibility badge for leaderboard",
+                  "Entry price locked to market close",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sm text-zinc-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
