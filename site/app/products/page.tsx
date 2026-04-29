@@ -1,126 +1,113 @@
 import Link from "next/link";
+import Image from "next/image";
+import { Metadata } from "next";
 import { products } from "@/lib/products";
-import { ArrowRight, Lock, Activity, Zap } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 
-export const metadata = {
-  title: "System Architecture - Calibrx AI",
-  description: "Explore Calibrx AI's growing suite of AI products built with a modular philosophy.",
+export const metadata: Metadata = {
+  title: "Products — Calibrx AI",
+  description: "Explore Calibrx AI's suite of AI-powered apps built to close real accountability gaps.",
 };
 
 export default function ProductsPage() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-white pt-32 pb-20 relative overflow-hidden">
-      
-      {/* Background Noise Texture */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none" />
-      
-      <div className="container px-4 relative z-10">
-        
-        {/* 1. Hero Section */}
-        <div className="max-w-3xl mx-auto text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-900/20 border border-cyan-500/30 text-cyan-400 text-xs font-mono mb-6">
-            <span className="w-2 h-2 bg-cyan-500 rounded-sm animate-pulse"></span>
-            PRODUCT SUITE
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight font-display">
-            Deployed <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Solutions</span>
+    <div className="min-h-screen bg-[#0A0A0A] text-white">
+
+      {/* ── Hero ─────────────────────────────────────────── */}
+      <section className="pt-36 pb-20 border-b border-white/[0.06]">
+        <div className="container max-w-3xl">
+          <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest mb-5">Our Apps</p>
+          <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+            Built to close<br />
+            <span className="text-zinc-400">accountability gaps.</span>
           </h1>
-          <p className="text-lg text-zinc-400 leading-relaxed">
-            Our growing suite of AI products is built with a modular philosophy. 
-            Each block is robust, composable, and calibrated for performance.
+          <p className="text-lg text-zinc-400 leading-relaxed max-w-xl">
+            Each app targets a real gap — where tracking exists but verification doesn't, or where engagement is missing and results drift.
           </p>
         </div>
+      </section>
 
-        {/* 2. The Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {products.map((p, index) => {
-            // Check if product is "Active" (has a real link)
-            const isActive = p.href && p.href !== "#";
+      {/* ── Products ─────────────────────────────────────── */}
+      <section className="py-20">
+        <div className="container">
+          <div className="space-y-6 max-w-5xl">
+            {products.map((p) => {
+              const isLive = p.status === "live";
 
-            return (
-              <div 
-                key={p.slug} 
-                className={`group relative rounded-2xl border ${isActive ? 'border-white/10 hover:border-cyan-500/50' : 'border-white/5'} bg-zinc-900/50 backdrop-blur-sm overflow-hidden transition-all duration-500`}
-              >
-                
-                {/* Image / Preview Area */}
-                <div className="relative h-64 bg-zinc-950 border-b border-white/5 overflow-hidden">
-                  {/* Background Grid inside image area */}
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px]" />
-                  
-                  {p.image ? (
-                    <img 
-                      src={p.image} 
-                      alt={`${p.name} cover`} 
-                      className={`w-full h-full object-contain p-8 transition-transform duration-700 ${isActive ? 'group-hover:scale-105' : 'opacity-40 grayscale'}`} 
+              return (
+                <Link
+                  key={p.slug}
+                  href={p.href}
+                  className="group flex flex-col md:flex-row gap-0 rounded-2xl border border-white/[0.08] bg-[#111111] overflow-hidden hover:border-white/[0.14] transition-all duration-300 cursor-pointer"
+                >
+                  {/* Image panel */}
+                  <div
+                    className="relative md:w-72 h-52 md:h-auto shrink-0 flex items-center justify-center overflow-hidden"
+                    style={{ background: p.accentDim }}
+                  >
+                    <Image
+                      src={p.image}
+                      alt={p.name}
+                      width={220}
+                      height={160}
+                      className="object-contain h-32 w-auto group-hover:scale-[1.04] transition-transform duration-500"
                     />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-zinc-700">
-                      <Activity size={48} strokeWidth={1} />
-                    </div>
-                  )}
-
-                  {/* Status Badge (Top Right) */}
-                  <div className="absolute top-4 right-4">
-                    {isActive ? (
-                      <span className="px-2 py-1 bg-green-500/10 border border-green-500/20 text-green-400 text-[10px] font-mono uppercase tracking-wider rounded flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                        LIVE SYSTEM
-                      </span>
-                    ) : (
-                      <span className="px-2 py-1 bg-zinc-800 border border-zinc-700 text-zinc-500 text-[10px] font-mono uppercase tracking-wider rounded flex items-center gap-2">
-                        <Lock size={10} />
-                        IN DEVELOPMENT
-                      </span>
-                    )}
                   </div>
-                </div>
 
-                {/* Content Area */}
-                <div className="p-8">
-                  <div className="flex justify-between items-start mb-4">
+                  {/* Content panel */}
+                  <div className="flex flex-col flex-1 p-8 justify-between">
                     <div>
-                      <div className="text-xs text-zinc-500 font-mono mb-2">SYS-0{index + 1}</div>
-                      <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-                        {p.name}
-                      </h3>
+                      <div className="flex items-start justify-between gap-4 mb-3">
+                        <div>
+                          <p className="text-xs text-zinc-500 font-mono mb-1">{p.category}</p>
+                          <h2 className="text-2xl font-bold text-white group-hover:text-zinc-100 transition-colors">
+                            {p.name}
+                          </h2>
+                        </div>
+                        {isLive ? (
+                          <span
+                            className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono border"
+                            style={{
+                              color: p.accentColor,
+                              borderColor: `${p.accentColor}30`,
+                              background: `${p.accentColor}10`,
+                            }}
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
+                            Live
+                          </span>
+                        ) : (
+                          <span className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono border border-white/[0.08] text-zinc-500 bg-white/[0.03]">
+                            <Clock size={10} />
+                            In development
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-sm text-zinc-400 leading-relaxed max-w-lg">{p.summary}</p>
                     </div>
-                    {/* Icon Identifier */}
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center border ${isActive ? 'bg-cyan-500/10 border-cyan-500/20 text-cyan-400' : 'bg-zinc-800 border-zinc-700 text-zinc-600'}`}>
-                      <Zap size={20} />
+
+                    <div className="mt-6 flex items-center gap-2 text-sm font-medium text-zinc-300 group-hover:text-white transition-colors">
+                      {isLive ? "View app" : "Learn more"}
+                      <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                     </div>
                   </div>
-
-                  <p className="text-zinc-400 text-sm leading-relaxed mb-8 h-10 line-clamp-2">
-                    {p.summary}
-                  </p>
-
-                  {/* Action Button */}
-                  {isActive ? (
-                    <Link 
-                      href={p.href} 
-                      className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-cyan-400 transition-colors group/btn"
-                    >
-                      INITIATE SEQUENCE
-                      <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-                    </Link>
-                  ) : (
-                    <span className="inline-flex items-center gap-2 text-sm font-medium text-zinc-600 cursor-not-allowed">
-                      ACCESS RESTRICTED
-                      <Lock size={14} />
-                    </span>
-                  )}
-                </div>
-
-                {/* Decorative Corner Lines */}
-                <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-white/5 rounded-tl-2xl pointer-events-none group-hover:border-cyan-500/30 transition-colors" />
-                <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-white/5 rounded-br-2xl pointer-events-none group-hover:border-cyan-500/30 transition-colors" />
-                
-              </div>
-            );
-          })}
+                </Link>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* ── Coming soon note ─────────────────────────────── */}
+      <section className="py-20 border-t border-white/[0.06]">
+        <div className="container max-w-2xl text-center">
+          <p className="text-sm text-zinc-500 mb-2">More in the pipeline</p>
+          <h3 className="text-2xl font-bold text-white mb-4">We build block by block.</h3>
+          <p className="text-zinc-400 leading-relaxed">
+            Every Calibrx app starts with a clear accountability gap. We don't build features — we build solutions to specific problems, then ship them when they're ready.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
