@@ -9,32 +9,6 @@ export const metadata: Metadata = {
     "Calistock is an AI-powered investment simulation platform. Chat with AI, simulate risk-free trades with verified market data, and share your track record.",
 };
 
-const steps = [
-  {
-    number: "01",
-    title: "Chat with AI",
-    description:
-      "Discuss any stock idea with the AI — entry points, risk assessment, exit logic. When you're ready, start a simulation directly from the chat.",
-  },
-  {
-    number: "02",
-    title: "Simulate the trade",
-    description:
-      "Your entry price is locked to the official market close — no overrides. The position appears in your portfolio and a minimum 3-day hold begins.",
-  },
-  {
-    number: "03",
-    title: "Track real results",
-    description:
-      "Live market data updates your position daily. You can't edit the numbers. Results are what they are — honest and verifiable.",
-  },
-  {
-    number: "04",
-    title: "Share & compare",
-    description:
-      "Close a position and it becomes a permanent ticket. Publish it to the community feed and the leaderboard. Every trade. Every result. Verified.",
-  },
-];
 
 const pillars = [
   {
@@ -205,69 +179,13 @@ export default function CalistockPage() {
         </div>
       </section>
 
-      {/* ── How it works ─────────────────────────────────── */}
-      <section className="py-24 border-b border-white/[0.06]">
-        <div className="container">
-          <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest mb-5">How It Works</p>
-          <h2 className="text-4xl font-bold mb-14">The cycle of transparency</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {steps.map((step) => (
-              <div key={step.number} className="p-6 rounded-xl border border-white/[0.08] bg-[#111111]">
-                <p className="text-3xl font-bold text-white/10 font-mono mb-4">{step.number}</p>
-                <h3 className="text-sm font-semibold text-white mb-2">{step.title}</h3>
-                <p className="text-sm text-zinc-400 leading-relaxed">{step.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 p-6 rounded-xl border border-amber-500/20 bg-amber-500/[0.05]">
-            <p className="text-amber-300 text-sm font-medium text-center">
-              Core promise: Every trade tracked. Every result verified. Every strategy comparable.
-            </p>
-          </div>
-
-          {/* App UI preview */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-            <div className="rounded-2xl border border-white/[0.08] bg-[#111111] overflow-hidden">
-              <Image
-                src="/Calistock_Market_3.jpg"
-                alt="Calistock — Active Positions and AI Insights"
-                width={600}
-                height={800}
-                className="w-full h-auto object-cover"
-              />
-            </div>
-            <div className="space-y-5">
-              <h3 className="text-xl font-bold text-white">What the app actually shows you</h3>
-              <p className="text-zinc-400 leading-relaxed">
-                Your active positions display live P&L, eligibility status, and the AI's latest market update — updated daily from real close data.
-              </p>
-              <ul className="space-y-3">
-                {[
-                  "Live % return on each position",
-                  "AI Daily Update linked to your trade",
-                  "Eligibility badge for leaderboard",
-                  "Entry price locked to market close",
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-zinc-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── Features ─────────────────────────────────────── */}
       <section className="py-24 border-b border-white/[0.06]">
         <div className="container">
           <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest mb-5">Features</p>
           <h2 className="text-4xl font-bold mb-14">Everything you need to prove your edge</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
             {pillars.map((p) => {
               const Icon = p.icon;
               return (
@@ -280,6 +198,24 @@ export default function CalistockPage() {
                 </div>
               );
             })}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div className="rounded-2xl border border-white/[0.08] bg-[#111111] overflow-hidden">
+              <Image
+                src="/Calistock_Market_3.jpg"
+                alt="Calistock — Active Positions and AI Insights"
+                width={600}
+                height={800}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-white">What it looks like in practice</h3>
+              <p className="text-zinc-400 leading-relaxed text-sm">
+                Active positions show live P&L, eligibility status for the leaderboard, and an AI-generated daily update — all tied to verified market close data.
+              </p>
+            </div>
           </div>
         </div>
       </section>
